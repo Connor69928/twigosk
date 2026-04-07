@@ -90,6 +90,23 @@ The main repo only accepts changes from the core devs, but forks and pull reques
 
 ---
 
+## 🐍 Python Version Notice
+
+TWIG currently requires a specific Python version for building.  
+PyInstaller (the tool that bundles TWIG into an executable) only supports certain Python releases, and newer versions tend to break compatibility until PyInstaller catches up.
+
+For now, TWIG builds correctly on:
+
+```
+Python 3.10 – 3.12
+```
+
+Python 3.13 and 3.14 are **not supported** by PyInstaller yet, so building TWIG on those versions will fail.
+
+Running from source is usually fine on newer versions, but if you want to compile TWIG into an executable, make sure you're using a supported Python version.
+
+---
+
 ## 📄 License
 
 TWIG is open‑source under the MIT License.
