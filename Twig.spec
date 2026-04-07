@@ -6,7 +6,8 @@ hiddenimports = collect_submodules('PyQt5.QtWebEngineWidgets')
 datas = collect_data_files('PyQt5.QtWebEngine', include_py_files=True)
 
 block_cipher = None
-project_dir = os.path.abspath(os.path.dirname(__file__))
+project_dir = os.path.abspath(os.path.dirname(os.path.realpath(__spec__.origin)))
+
 
 a = Analysis(
     ['Browser.py'],
