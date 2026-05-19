@@ -147,6 +147,7 @@ class TitleBar(QWidget):
             btn.setFixedSize(32, 32)
             btn.setStyleSheet("""
                 QPushButton {
+
                     background-color: #1e1e1e;
                     color: #f0f0f0;
                     border: none;
@@ -185,9 +186,10 @@ class TitleBar(QWidget):
 class Twig(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("TWIG 1.3")
+        self.setWindowTitle("Twigosk")
         self.resize(1024, 768)
         self.setWindowFlags(Qt.FramelessWindowHint)
+        self.showMaximized()
 
         profile = QWebEngineProfile.defaultProfile()
         original_ua = profile.httpUserAgent()
@@ -202,20 +204,22 @@ class Twig(QMainWindow):
             }
             QTabWidget::pane {
                 border: 1px solid #333;
+		display: none;
             }
-            QTabBar::tab {
-                background: #1e1e1e;
-                color: #f0f0f0;
-                padding: 8px;
-                border-radius: 6px;
-                margin: 2px;
-            }
+	    QTabBar::tab {
+        width: 0px; 
+        height: 0px; 
+        margin: 0px; 
+        padding: 0px; 
+        border: none;
+    }
             QTabBar::tab:selected {
                 background: #2e2e2e;
             }
             QToolBar {
                 background-color: #1a1a1a;
                 spacing: 6px;
+
             }
             QToolButton {
                 background-color: #1e1e1e;
@@ -234,38 +238,38 @@ class Twig(QMainWindow):
         central_layout.setContentsMargins(0, 0, 0, 0)
         central_layout.setSpacing(0)
 
-        self.title_bar = TitleBar(self)
-        central_layout.addWidget(self.title_bar)
+        #self.title_bar = TitleBar(self)
+        #central_layout.addWidget(self.title_bar)
 
         self.tabs = QTabWidget()
         self.tabs.setTabsClosable(True)
         self.tabs.tabCloseRequested.connect(self.close_tab)
         central_layout.addWidget(self.tabs)
 
-        self.toolbar = QToolBar("Twig Controls")
-        central_layout.addWidget(self.toolbar)
+        #self.toolbar = QToolBar("Twig Controls")
+        #central_layout.addWidget(self.toolbar)
 
         self.setCentralWidget(central_widget)
 
-        back_action = QAction("←", self)
-        back_action.triggered.connect(self.go_back)
-        self.toolbar.addAction(back_action)
+        #back_action = QAction("←", self)
+        #back_action.triggered.connect(self.go_back)
+        #self.toolbar.addAction(back_action)
 
-        forward_action = QAction("→", self)
-        forward_action.triggered.connect(self.go_forward)
-        self.toolbar.addAction(forward_action)
+        #forward_action = QAction("→", self)
+        #forward_action.triggered.connect(self.go_forward)
+        #self.toolbar.addAction(forward_action)
 
-        reload_action = QAction("⟳", self)
-        reload_action.triggered.connect(self.reload_page)
-        self.toolbar.addAction(reload_action)
+        #reload_action = QAction("⟳", self)
+        #reload_action.triggered.connect(self.reload_page)
+        #self.toolbar.addAction(reload_action)
 
-        devtools_action = QAction("DevTools", self)
-        devtools_action.triggered.connect(self.open_devtools)
-        self.toolbar.addAction(devtools_action)
+        #devtools_action = QAction("DevTools", self)
+        #devtools_action.triggered.connect(self.open_devtools)
+        #self.toolbar.addAction(devtools_action)
 
-        new_tab_action = QAction("+", self)
-        new_tab_action.triggered.connect(lambda: self.add_tab())
-        self.toolbar.addAction(new_tab_action)
+        #new_tab_action = QAction("+", self)
+        #new_tab_action.triggered.connect(lambda: self.add_tab())
+        #self.toolbar.addAction(new_tab_action)
 
         self.add_tab(HOMEPAGE)
 
